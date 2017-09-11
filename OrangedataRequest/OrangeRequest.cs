@@ -4,6 +4,8 @@ namespace OrangedataRequest
 {
     public sealed class OrangeRequest
     {
+        private readonly ODDataService _dataService;
+
         /// <summary>
         /// </summary>
         /// <param name="keyPath">Путь к xml-файлу ключа для подписи клиентских сообщений</param>
@@ -13,8 +15,6 @@ namespace OrangedataRequest
         {
             _dataService = new ODDataService(keyPath, certPath, certPassword);
         }
-
-        private readonly ODDataService _dataService;
 
         /// <summary>
         ///     Отправка запроса создания чека
@@ -35,6 +35,27 @@ namespace OrangedataRequest
         public ODResponse GetCheckState(string INN, string documentId)
         {
             return _dataService.GetCheckState(INN, documentId);
+        }
+
+        /// <summary>
+        ///     Отправка запроса создания чека коррекции
+        /// </summary>
+        /// <param name="correctionCheck">Чек коррекции</param>
+        /// <returns></returns>
+        public ODResponse CreateCorrectionCheck(ReqCreateCorrectionCheck correctionCheck)
+        {
+            return _dataService.CreateCorrectionsCheck(correctionCheck);
+        }
+
+        /// <summary>
+        ///     Отправка запроса состояния чека коррекции
+        /// </summary>
+        /// <param name="INN">ИНН организации, для которой пробивается чек</param>
+        /// <param name="documentId">Идентификатор документа, который был указан при его создании</param>
+        /// <returns></returns>
+        public ODResponse GetCorrectionCheckState(string INN, string documentId)
+        {
+            return _dataService.GetCorrectionCheckState(INN, documentId);
         }
     }
 }

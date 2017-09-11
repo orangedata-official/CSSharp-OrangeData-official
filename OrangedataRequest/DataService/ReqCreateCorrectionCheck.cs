@@ -7,7 +7,7 @@ namespace OrangedataRequest.DataService
     ///     Тело запроса
     /// </summary>
     [JsonObject]
-    public class ReqCreateCheck
+    public class ReqCreateCorrectionCheck
     {
         /// <summary>
         ///     Идентификатор документа
@@ -27,7 +27,7 @@ namespace OrangedataRequest.DataService
         /// <summary>
         ///     Содержимое документа
         /// </summary>
-        public Content Content { get; set; }
+        public CorrectionContent Content { get; set; }
 
         /// <summary>
         ///     Название ключа который должен быть использован для проверки подпись. 

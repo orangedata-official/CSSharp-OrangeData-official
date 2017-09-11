@@ -46,15 +46,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataService\ODResponse.cs" />
+    <Compile Include="DataService\ReqCreateCorrectionCheck.cs" />
     <Compile Include="DataService\RespCreateCheck.cs" />
     <Compile Include="DataService\ODDataService.cs" />
     <Compile Include="DataService\RespCheckStatus.cs" />
+    <Compile Include="Enums\AgentTypeEnum.cs" />
+    <Compile Include="Enums\CorrectionTypeEnum.cs" />
     <Compile Include="Enums\DocTypeEnum.cs" />
+    <Compile Include="Enums\PaymentMethodTypeEnum.cs" />
+    <Compile Include="Enums\PaymentSubjectTypeEnum.cs" />
     <Compile Include="Enums\PaymentTypeEnum.cs" />
     <Compile Include="Enums\TaxationSystemEnum.cs" />
     <Compile Include="Enums\VATRateEnum.cs" />
     <Compile Include="Helpers\SerializationHelper.cs" />
     <Compile Include="Models\CheckClose.cs" />
+    <Compile Include="Models\CorrectionContent.cs" />
     <Compile Include="Models\Content.cs" />
     <Compile Include="DataService\ReqCreateCheck.cs" />
     <Compile Include="Models\Payment.cs" />
@@ -63,6 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

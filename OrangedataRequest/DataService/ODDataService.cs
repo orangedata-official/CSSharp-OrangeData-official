@@ -30,7 +30,14 @@ namespace OrangedataRequest.DataService
             var signature = ComputeSignature(requestBody);
 
             return SendRequest<RespCreateCheck>($"{API_URI}/documents", "POST", requestBody, signature);
+        }
 
+        public ODResponse CreateCorrectionsCheck(ReqCreateCorrectionCheck correctionCheck)
+        {
+            var requestBody = SerializationHelper.Serialize(correctionCheck);
+            var signature = ComputeSignature(requestBody);
+
+            return SendRequest<RespCreateCheck>($"{API_URI}/corrections", "POST", requestBody, signature);
         }
 
         public ODResponse GetCheckState(string INN, string documentId)
@@ -38,7 +45,14 @@ namespace OrangedataRequest.DataService
             return SendRequest<RespCheckStatus>($"{API_URI}/documents/{INN}/status/{documentId}", "GET");
         }
 
+        public ODResponse GetCorrectionCheckState(string INN, string documentId)
+        {
+            return SendRequest<RespCheckStatus>($"{API_URI}/corrections/{INN}/status/{documentId}", "GET");
+        }
+
         #endregion Public methods
+
+        #region Helpers
 
         private ODResponse SendRequest<T>(string uri, string method, string requestBody = null, string signature = null)
         {
@@ -123,5 +137,7 @@ namespace OrangedataRequest.DataService
                 return Convert.ToBase64String(rsa.SignData(data, "SHA256"));
             }
         }
+
+        #endregion Helpers
     }
 }

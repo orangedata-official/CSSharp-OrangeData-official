@@ -1,10 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using System.ComponentModel;
+using Newtonsoft.Json;
 using OrangedataRequest.Enums;
 
 namespace OrangedataRequest.Models
 {
     /// <summary>
-    ///     Позиция чека
+    ///     Предмет расчёта
     /// </summary>
     [JsonObject]
     public class Position
@@ -28,5 +29,17 @@ namespace OrangedataRequest.Models
         ///     Текст позиции
         /// </summary>
         public string Text { get; set; }
+
+        /// <summary>
+        ///     Признак способа расчета
+        /// </summary>
+        [DefaultValue(PaymentMethodTypeEnum.Full)]
+        public PaymentMethodTypeEnum PaymentMethodType { get; set; }
+
+        /// <summary>
+        ///     Признак предмета расчета
+        /// </summary>
+        [DefaultValue(PaymentSubjectTypeEnum.Product)]
+        public PaymentSubjectTypeEnum PaymentSubjectType { get; set; }
     }
 }
