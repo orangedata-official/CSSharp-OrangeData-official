@@ -23,41 +23,64 @@ namespace TestLauncher
                 Content = new Content
                 {
                     Type = DocTypeEnum.In,
+                    AgentType = AgentTypeEnum.PayingAgent,
                     CheckClose = new CheckClose
                     {
-                        Payments = new Payment[]
+                        Payments = new[]
                         {
                             new Payment
                             {
-                                //Amount = 132.35m,
-                                Amount = 1.35m,
+                                Amount = 132.35m,
+                                //Amount = 1.35m,
                                 Type = PaymentTypeEnum.Cash
                             }
                         },
                         TaxationSystem = TaxationSystemEnum.Simplified
                     },
-                    Positions = new Position[]
+                    Positions = new []
                     {
                         new Position
                         {
                             Price = 123.45m,
                             Quantity = 1m,
                             Tax = VATRateEnum.NONE,
-                            Text = "Булка"
+                            Text = "Булка",
+                            PaymentMethodType = PaymentMethodTypeEnum.Full,
+                            PaymentSubjectType = PaymentSubjectTypeEnum.Product
                         },
                         new Position
                         {
                             Price = 4.45m,
                             Quantity = 2m,
                             Tax = VATRateEnum.VAT110,
-                            Text = "Спички"
+                            Text = "Спички",
+                            PaymentMethodType = PaymentMethodTypeEnum.Full,
+                            PaymentSubjectType = PaymentSubjectTypeEnum.Product
                         }
                     },
                     CustomerContact = "foo@example.com"
                 }
             };
+
+            var dummyCreateCorrectionCheckRequest = new ReqCreateCorrectionCheck
+            {
+                Id = "66549876216",
+                INN = "5001104058",
+                Content = new CorrectionContent
+                {
+                    Type = DocTypeEnum.In,
+                    CashSum = 2000,
+                    TaxationSystem = TaxationSystemEnum.Common,
+                    Tax4Sum = 2000,
+                    Description = "Тестовая коррекция",
+                    СauseDocumentDate = DateTime.UtcNow.Date,
+                    СauseDocumentNumber = "21"
+                }
+            };
             var res1 = dummyOrangeRequest.CreateCheck(dummyCreateCheckRequest);
             var res2 = dummyOrangeRequest.GetCheckState("5001104058", "12345678990");
+            var res3 = dummyOrangeRequest.CreateCorrectionCheck(dummyCreateCorrectionCheckRequest);
+            var res4 = dummyOrangeRequest.GetCorrectionCheckState("5001104058", "12345678990");
             Console.ReadKey();
         }
     }

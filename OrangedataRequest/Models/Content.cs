@@ -11,12 +11,12 @@ namespace OrangedataRequest.Models
     public sealed class Content
     {
         /// <summary>
-        ///     Тип документа
+        ///     Признак расчета
         /// </summary>
         public DocTypeEnum Type { get; set; }
 
         /// <summary>
-        ///     Список позиций в чеке
+        ///     Список предметов расчета
         /// </summary>
         public IEnumerable<Position> Positions { get; set; }
 
@@ -29,5 +29,51 @@ namespace OrangedataRequest.Models
         ///     Телефон или e-mail покупателя
         /// </summary>
         public string CustomerContact { get; set; }
+        
+        /// <summary>
+        ///     Признак агента. Битовое поле, где номер бита обозначает, что оказывающий услугу покупателю (клиенту) пользователь является
+        ///     Кассовый чек(БСО) может содержать реквизиты «признак агента» (тег 1057), только если отчет о регистрации и(или) текущий отчет о перерегистрации содержит реквизит «признак агента» (тег 1057), имеющий значение, идентичное значению реквизита «признак агента» (тег 1057) кассового чека.
+        /// </summary>
+        public AgentTypeEnum AgentType { get; set; }
+
+        /// <summary>
+        ///     Телефон оператора перевода
+        /// </summary>
+        public string[] PaymentTransferOperatorPhoneNumbers { get; set; }
+
+        /// <summary>
+        ///     Операция платежного агента
+        /// </summary>
+        public string PaymentAgentOperation { get; set; }
+
+        /// <summary>
+        ///     Телефон платежного агента
+        /// </summary>
+        public string[] PaymentAgentPhoneNumbers { get; set; }
+
+        /// <summary>
+        ///     Телефон оператора по приему платежей
+        /// </summary>
+        public string[] PaymentOperatorPhoneNumbers { get; set; }
+
+        /// <summary>
+        ///     Наименование оператора перевода
+        /// </summary>
+        public string PaymentOperatorName { get; set; }
+
+        /// <summary>
+        ///     Адрес оператора перевода
+        /// </summary>
+        public string PaymentOperatorAddress { get; set; }
+
+        /// <summary>
+        ///     ИНН оператора перевода
+        /// </summary>
+        public string PaymentOperatorINN { get; set; }
+
+        /// <summary>
+        ///     Телефон поставщика
+        /// </summary>
+        public string[] SupplierPhoneNumbers { get; set; }
     }
 }
