@@ -1,18 +1,19 @@
 <?xml version="1.0"?>
-<package >
-  <metadata>
-    <id>Orangedata.OrangeRequest</id>
-    <version>$version$</version>
-    <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
-    <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
-    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
-    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
-    <releaseNotes>First release.</releaseNotes>
-    <copyright>Copyright 2017</copyright>
-    <tags>Tag1 Tag2</tags>
-  </metadata>
+<package>
+    <metadata>
+        <id>OrangeData.Api</id>
+        <version>$version$</version>
+        <title>API Orange Data</title>
+        <authors>OrangeData</authors>
+        <owners>OrangeData</owners>
+        <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
+        <projectUrl>https://github.com/orangedata-official/CSSharp-OrangeData-official</projectUrl>
+        <iconUrl>http://orangedata.ru/favicon.ico</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>C# API для сервиса онлайн-касс Orange data</description>
+        <copyright>Copyright OrangeData 2017</copyright>
+        <dependencies>
+            <dependency id="Newtonsoft.Json" version="10.0.3" />
+        </dependencies>
+    </metadata>
 </package>
