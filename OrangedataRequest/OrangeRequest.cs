@@ -11,9 +11,9 @@ namespace OrangedataRequest
         /// <param name="keyPath">Путь к xml-файлу ключа для подписи клиентских сообщений</param>
         /// <param name="certPath">Путь к клиентскому сертификату</param>
         /// <param name="certPassword">Пароль клиентского сертификата</param>
-        public OrangeRequest(string keyPath, string certPath, string certPassword)
+        public OrangeRequest(string keyPath, string certPath, string certPassword,string apiUrl= "https://46.28.89.45:2443/api/v2")
         {
-            _dataService = new ODDataService(keyPath, certPath, certPassword);
+            _dataService = new ODDataService(keyPath, certPath, certPassword,apiUrl);
         }
 
         /// <summary>

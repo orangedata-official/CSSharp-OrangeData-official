@@ -10,13 +10,15 @@ namespace OrangedataRequest.DataService
 {
     internal sealed class ODDataService
     {
-        public ODDataService(string keyPath, string certPath, string certPassword)
+        public ODDataService(string keyPath, string certPath, string certPassword,
+            string apiUrl)
         {
             _keyPath = keyPath;
             _cert = new X509Certificate2(certPath, certPassword);
+            _apiUrl = apiUrl;
         }
 
-        private const string API_URI = "https://46.28.89.45:2443/api/v2";
+        private string _apiUrl = "https://46.28.89.45:2443/api/v2";
 
         private readonly string _keyPath;
         private readonly X509Certificate2 _cert;
@@ -29,7 +31,7 @@ namespace OrangedataRequest.DataService
             var requestBody = SerializationHelper.Serialize(check);
             var signature = ComputeSignature(requestBody);
 
-            return SendRequest<RespCreateCheck>($"{API_URI}/documents", "POST", requestBody, signature);
+            return SendRequest<RespCreateCheck>($"{_apiUrl}/documents", "POST", requestBody, signature);
         }
 
         public ODResponse CreateCorrectionsCheck(ReqCreateCorrectionCheck correctionCheck)
@@ -37,17 +39,17 @@ namespace OrangedataRequest.DataService
             var requestBody = SerializationHelper.Serialize(correctionCheck);
             var signature = ComputeSignature(requestBody);
 
-            return SendRequest<RespCreateCheck>($"{API_URI}/corrections", "POST", requestBody, signature);
+            return SendRequest<RespCreateCheck>($"{_apiUrl}/corrections", "POST", requestBody, signature);
         }
 
         public ODResponse GetCheckState(string INN, string documentId)
         {
-            return SendRequest<RespCheckStatus>($"{API_URI}/documents/{INN}/status/{documentId}", "GET");
+            return SendRequest<RespCheckStatus>($"{_apiUrl}/documents/{INN}/status/{documentId}", "GET");
         }
 
         public ODResponse GetCorrectionCheckState(string INN, string documentId)
         {
-            return SendRequest<RespCheckStatus>($"{API_URI}/corrections/{INN}/status/{documentId}", "GET");
+            return SendRequest<RespCheckStatus>($"{_apiUrl}/corrections/{INN}/status/{documentId}", "GET");
         }
 
         #endregion Public methods
