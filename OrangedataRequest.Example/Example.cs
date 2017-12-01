@@ -1,14 +1,15 @@
-﻿using OrangedataRequest.DataService;
+﻿using System;
+using System.Threading.Tasks;
+using OrangedataRequest;
+using OrangedataRequest.DataService;
 using OrangedataRequest.Models;
 using OrangedataRequest.Enums;
-using System;
-using OrangedataRequest;
 
 namespace TestLauncher
 {
     public class Example
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var prKeyPath = "F:\\tmp\\API\\private_key.xml";
             var certPath = "F:\\tmp\\API\\client.pfx";
@@ -77,10 +78,10 @@ namespace TestLauncher
                     СauseDocumentNumber = "21"
                 }
             };
-            var res1 = dummyOrangeRequest.CreateCheck(dummyCreateCheckRequest);
-            var res2 = dummyOrangeRequest.GetCheckState("5001104058", "12345678990");
-            var res3 = dummyOrangeRequest.CreateCorrectionCheck(dummyCreateCorrectionCheckRequest);
-            var res4 = dummyOrangeRequest.GetCorrectionCheckState("5001104058", "12345678990");
+            var res1 = await dummyOrangeRequest.CreateCheckAsync(dummyCreateCheckRequest);
+            var res2 = await dummyOrangeRequest.GetCheckStateAsync("5001104058", "12345678990");
+            var res3 = await dummyOrangeRequest.CreateCorrectionCheckAsync(dummyCreateCorrectionCheckRequest);
+            var res4 = await dummyOrangeRequest.GetCorrectionCheckStateAsync("5001104058", "12345678990");
             Console.ReadKey();
         }
     }
