@@ -1,4 +1,5 @@
 ﻿using OrangedataRequest.DataService;
+using System.Threading.Tasks;
 
 namespace OrangedataRequest
 {
@@ -11,9 +12,9 @@ namespace OrangedataRequest
         /// <param name="keyPath">Путь к xml-файлу ключа для подписи клиентских сообщений</param>
         /// <param name="certPath">Путь к клиентскому сертификату</param>
         /// <param name="certPassword">Пароль клиентского сертификата</param>
-        public OrangeRequest(string keyPath, string certPath, string certPassword)
+        public OrangeRequest(string keyPath, string certPath, string certPassword, string apiUrl= "https://46.28.89.45:2443/api/v2")
         {
-            _dataService = new ODDataService(keyPath, certPath, certPassword);
+            _dataService = new ODDataService(keyPath, certPath, certPassword,apiUrl);
         }
 
         /// <summary>
@@ -21,9 +22,9 @@ namespace OrangedataRequest
         /// </summary>
         /// <param name="check">Чек</param>
         /// <returns></returns>
-        public ODResponse CreateCheck(ReqCreateCheck check)
+        public async Task<ODResponse> CreateCheckAsync(ReqCreateCheck check)
         {
-            return _dataService.SendCheck(check);
+            return await _dataService.SendCheckAsync(check);
         }
 
         /// <summary>
@@ -32,9 +33,9 @@ namespace OrangedataRequest
         /// <param name="INN">ИНН организации, для которой пробивается чек</param>
         /// <param name="documentId">Идентификатор документа, который был указан при его создании</param>
         /// <returns></returns>
-        public ODResponse GetCheckState(string INN, string documentId)
+        public async Task<ODResponse> GetCheckStateAsync(string INN, string documentId)
         {
-            return _dataService.GetCheckState(INN, documentId);
+            return await _dataService.GetCheckStateAsync(INN, documentId);
         }
 
         /// <summary>
@@ -42,9 +43,9 @@ namespace OrangedataRequest
         /// </summary>
         /// <param name="correctionCheck">Чек коррекции</param>
         /// <returns></returns>
-        public ODResponse CreateCorrectionCheck(ReqCreateCorrectionCheck correctionCheck)
+        public async Task<ODResponse> CreateCorrectionCheckAsync(ReqCreateCorrectionCheck correctionCheck)
         {
-            return _dataService.CreateCorrectionsCheck(correctionCheck);
+            return await _dataService.CreateCorrectionsCheckAsync(correctionCheck);
         }
 
         /// <summary>
@@ -53,9 +54,9 @@ namespace OrangedataRequest
         /// <param name="INN">ИНН организации, для которой пробивается чек</param>
         /// <param name="documentId">Идентификатор документа, который был указан при его создании</param>
         /// <returns></returns>
-        public ODResponse GetCorrectionCheckState(string INN, string documentId)
+        public async Task<ODResponse> GetCorrectionCheckStateAsync(string INN, string documentId)
         {
-            return _dataService.GetCorrectionCheckState(INN, documentId);
+            return await _dataService.GetCorrectionCheckStateAsync(INN, documentId);
         }
     }
 }
