@@ -74,8 +74,8 @@ namespace TestLauncher
                     TaxationSystem = TaxationSystemEnum.Common,
                     Tax4Sum = 2000,
                     Description = "Тестовая коррекция",
-                    СauseDocumentDate = DateTime.UtcNow.Date,
-                    СauseDocumentNumber = "21"
+                    CauseDocumentDate = DateTime.UtcNow.Date,
+                    CauseDocumentNumber = "21"
                 }
             };
             var res1 = await dummyOrangeRequest.CreateCheckAsync(dummyCreateCheckRequest);
