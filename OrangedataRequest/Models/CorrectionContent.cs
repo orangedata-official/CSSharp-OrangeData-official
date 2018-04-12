@@ -29,12 +29,12 @@ namespace OrangedataRequest.Models
         ///     Дата документа основания для коррекции
         ///     В данном реквизите время всегда указывать, как 00:00:00
         /// </summary>
-        public DateTime СauseDocumentDate { get; set; }
+        public DateTime CauseDocumentDate { get; set; }
 
         /// <summary>
         ///     Номер документа основания для коррекции
         /// </summary>
-        public string СauseDocumentNumber { get; set; }
+        public string CauseDocumentNumber { get; set; }
 
         /// <summary>
         ///     Сумма расчета, указанного в чеке (БСО
