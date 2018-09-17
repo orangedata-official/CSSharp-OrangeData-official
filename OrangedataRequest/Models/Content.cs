@@ -75,5 +75,40 @@ namespace OrangedataRequest.Models
         ///     Телефон поставщика
         /// </summary>
         public string[] SupplierPhoneNumbers { get; set; }
+
+        /// <summary>
+        ///     Дополнительный реквизит пользователя
+        /// </summary>
+        public Dictionary<string, string> AdditionalUserAttribute { get; set; }
+
+        /// <summary>
+        ///     Дополнительный реквизит чека(БСО)
+        /// </summary>
+        public string AdditionalAttribute { get; set; }
+
+        /// <summary>
+        ///     Номер автомата
+        /// </summary>
+        public string AutomatNumberonalAttribute { get; set; }
+
+        /// <summary>
+        ///     Адрес расчетов
+        /// </summary>
+        public string SettlementAddress { get; set; }
+
+        /// <summary>
+        ///     Место расчетов
+        /// </summary>
+        public string SettlementPlace { get; set; }
+
+        /// <summary>
+        ///     Покупатель (клиент)
+        /// </summary>
+        public string Customer { get; set; }
+
+        /// <summary>
+        ///     ИНН покупателя (клиента)
+        /// </summary>
+        public string CustomerINN { get; set; }
     }
 }

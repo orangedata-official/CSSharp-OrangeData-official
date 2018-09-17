@@ -41,5 +41,55 @@ namespace OrangedataRequest.Models
         /// </summary>
         [DefaultValue(PaymentSubjectTypeEnum.Product)]
         public PaymentSubjectTypeEnum PaymentSubjectType { get; set; }
+
+        /// <summary>
+        ///     Код товарной номенклатуры
+        /// </summary>
+        public string NomenclatureCode { get; set; }
+
+        /// <summary>
+        ///     Данные поставщика
+        /// </summary>
+        public SupplierInfo SupplierInfo { get; set; }
+
+        /// <summary>
+        ///     ИНН поставщика
+        /// </summary>
+        public string SupplierINN { get; set; }
+
+        /// <summary>
+        ///     Признак агента по предмету расчета
+        /// </summary>
+        public AgentTypeEnum AgentType { get; set; }
+
+        /// <summary>
+        ///     Данные агента
+        /// </summary>
+        public AgentInfo AgentInfo { get; set; }
+
+        /// <summary>
+        ///     Единица измерения предмета расчета
+        /// </summary>
+        public string UnitOfMeasurement { get; set; }
+
+        /// <summary>
+        ///     Дополнительный реквизит предмета расчета
+        /// </summary>
+        public string AdditionalAttribute { get; set; }
+
+        /// <summary>
+        ///     Код страны происхождения товара
+        /// </summary>
+        public string ManufacturerCountryCode { get; set; }
+
+        /// <summary>
+        ///     Номер таможенной декларации
+        /// </summary>
+        public string CustomsDeclarationNumber { get; set; }
+
+        /// <summary>
+        ///     Акциз
+        /// </summary>
+        public decimal Excise { get; set; }
     }
 }
