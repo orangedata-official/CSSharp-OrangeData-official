@@ -60,7 +60,7 @@ namespace OrangedataRequest.Models
         /// <summary>
         ///     Признак агента по предмету расчета
         /// </summary>
-        public AgentTypeEnum AgentType { get; set; }
+        public AgentTypeEnum? AgentType { get; set; }
 
         /// <summary>
         ///     Данные агента
@@ -90,6 +90,6 @@ namespace OrangedataRequest.Models
         /// <summary>
         ///     Акциз
         /// </summary>
-        public decimal Excise { get; set; }
+        public decimal? Excise { get; set; }
     }
 }

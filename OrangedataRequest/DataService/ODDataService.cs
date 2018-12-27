@@ -98,7 +98,14 @@ namespace OrangedataRequest.DataService
                 res.StatusCode = response.StatusCode;
                 var text = await response.Content.ReadAsStringAsync();
                 res.Response = text;
-                res.ResponseObject = SerializationHelper.Deserealize<T>(text);
+                try
+                {
+                    res.ResponseObject = SerializationHelper.Deserealize<T>(text);
+                }
+                catch(Exception ex)
+                {
+                    res.ResponseObject = ex;
+                }
             }
             return res;
         }
