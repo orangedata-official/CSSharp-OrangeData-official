@@ -89,7 +89,7 @@ namespace OrangedataRequest.Models
         /// <summary>
         ///     Номер автомата
         /// </summary>
-        public string AutomatNumberonalAttribute { get; set; }
+        public string AutomatNumber { get; set; }
 
         /// <summary>
         ///     Адрес расчетов
