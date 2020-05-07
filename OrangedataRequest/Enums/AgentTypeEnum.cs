@@ -5,30 +5,30 @@
         /// <summary>
         ///     Банковский платежный агент
         /// </summary>
-        BankAgent,
+        BankAgent = 1 << 0,
         /// <summary>
         ///     Банковский платежный субагент
         /// </summary>
-        BankSubAgent,
+        BankSubAgent = 1 << 1,
         /// <summary>
         ///     Платежный агент
         /// </summary>
-        PayingAgent,
+        PayingAgent = 1 << 2,
         /// <summary>
         ///     Платежный субагент
         /// </summary>
-        PayingSubAgent,
+        PayingSubAgent = 1 << 3,
         /// <summary>
         ///     Поверенный
         /// </summary>
-        Attorney,
+        Attorney = 1 << 4,
         /// <summary>
         ///     Комиссионер
         /// </summary>
-        Comissioner,
+        Comissioner = 1 << 5,
         /// <summary>
         ///     Иной агент
         /// </summary>
-        Other
+        Other = 1 << 6
     }
 }
