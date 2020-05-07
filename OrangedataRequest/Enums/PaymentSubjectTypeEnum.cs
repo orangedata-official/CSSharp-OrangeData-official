@@ -56,6 +56,30 @@
         /// <summary>
         ///     Иной предмет расчета
         /// </summary>
-        Other
+        Other,
+        /// <summary>
+        ///     Имущественное право
+        /// </summary>
+        PropertyRight,
+        /// <summary>
+        ///     Внереализационный доход
+        /// </summary>
+        NonOperatingIncome,
+        /// <summary>
+        ///     Страховые взносы
+        /// </summary>
+        InsurancePremiums,
+        /// <summary>
+        ///     Торговый сбор
+        /// </summary>
+        TradingFee,
+        /// <summary>
+        ///     Курортный сбор
+        /// </summary>
+        ResortFee,
+        /// <summary>
+        ///     Залог
+        /// </summary>
+        Pledge
     }
 }
