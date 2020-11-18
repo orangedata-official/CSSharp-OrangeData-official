@@ -49,7 +49,7 @@ namespace OrangedataRequest.DataService
 
         public async Task<ODResponse> GetCorrectionCheckStateAsync(string INN, string documentId)
         {
-            return await SendRequestAsync<RespCheckStatus>($"{_apiUrl}/corrections/{INN}/status/{documentId}", HttpMethod.Get);
+            return await SendRequestAsync<RespCorrectionCheckStatus>($"{_apiUrl}/corrections/{INN}/status/{documentId}", HttpMethod.Get);
         }
 
         #endregion Public methods
