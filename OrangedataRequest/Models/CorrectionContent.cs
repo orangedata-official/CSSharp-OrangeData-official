@@ -21,11 +21,6 @@ namespace OrangedataRequest.Models
         public DocTypeEnum Type { get; set; }
 
         /// <summary>
-        ///     Описание коррекции
-        /// </summary>
-        public string Description { get; set; }
-
-        /// <summary>
         ///     Дата документа основания для коррекции
         ///     В данном реквизите время всегда указывать, как 00:00:00
         /// </summary>

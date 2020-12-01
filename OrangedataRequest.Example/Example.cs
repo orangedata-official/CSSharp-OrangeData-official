@@ -73,7 +73,6 @@ namespace TestLauncher
                     CashSum = 2000,
                     TaxationSystem = TaxationSystemEnum.Common,
                     Tax4Sum = 2000,
-                    Description = "Тестовая коррекция",
                     CauseDocumentDate = DateTime.UtcNow.Date,
                     CauseDocumentNumber = "21"
                 }
