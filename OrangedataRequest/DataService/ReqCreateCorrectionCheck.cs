@@ -35,5 +35,10 @@ namespace OrangedataRequest.DataService
         ///     Если имя ключа не указано для проверки подписи будет использован ключ, заданный по умолчанию.
         /// </summary>
         public string Key { get; set; }
+        
+        /// <summary>
+        /// URL для отправки результатов обработки чека POST запросом
+        /// </summary>
+        public string CallbackUrl { get; set; }
     }
 }
