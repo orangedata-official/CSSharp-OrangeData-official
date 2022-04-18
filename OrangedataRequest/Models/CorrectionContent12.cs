@@ -1,6 +1,7 @@
-﻿using Newtonsoft.Json;
-using OrangedataRequest.Enums;
+﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
+using OrangedataRequest.Enums;
 
 namespace OrangedataRequest.Models
 {
@@ -8,13 +9,12 @@ namespace OrangedataRequest.Models
     ///     Содержимое документа
     /// </summary>
     [JsonObject]
-    public sealed class Content
+    public sealed class CorrectionContent12
     {
-
         /// <summary>
-        ///     Признак расчета
+        ///     Номер версии ФФД, 1209(ФФД 1.2 - 4)
         /// </summary>
-        public int? FfdVersion { get; set; } 
+        public int FfdVersion { get; set; }
 
         /// <summary>
         ///     Признак расчета
@@ -35,52 +35,22 @@ namespace OrangedataRequest.Models
         ///     Телефон или e-mail покупателя
         /// </summary>
         public string CustomerContact { get; set; }
-        
-        /// <summary>
-        ///     Признак агента. Битовое поле, где номер бита обозначает, что оказывающий услугу покупателю (клиенту) пользователь является
-        ///     Кассовый чек(БСО) может содержать реквизиты «признак агента» (тег 1057), только если отчет о регистрации и(или) текущий отчет о перерегистрации содержит реквизит «признак агента» (тег 1057), имеющий значение, идентичное значению реквизита «признак агента» (тег 1057) кассового чека.
-        /// </summary>
-        public AgentTypeEnum? AgentType { get; set; }
 
         /// <summary>
-        ///     Телефон оператора перевода
+        ///     Тип коррекции
         /// </summary>
-        public string[] PaymentTransferOperatorPhoneNumbers { get; set; }
+        public CorrectionTypeEnum CorrectionType { get; set; }
 
         /// <summary>
-        ///     Операция платежного агента
+        ///     Дата документа основания для коррекции
+        ///     В данном реквизите время всегда указывать, как 00:00:00
         /// </summary>
-        public string PaymentAgentOperation { get; set; }
+        public string CauseDocumentDate { get; set; }
 
         /// <summary>
-        ///     Телефон платежного агента
+        ///     Номер документа основания для коррекции
         /// </summary>
-        public string[] PaymentAgentPhoneNumbers { get; set; }
-
-        /// <summary>
-        ///     Телефон оператора по приему платежей
-        /// </summary>
-        public string[] PaymentOperatorPhoneNumbers { get; set; }
-
-        /// <summary>
-        ///     Наименование оператора перевода
-        /// </summary>
-        public string PaymentOperatorName { get; set; }
-
-        /// <summary>
-        ///     Адрес оператора перевода
-        /// </summary>
-        public string PaymentOperatorAddress { get; set; }
-
-        /// <summary>
-        ///     ИНН оператора перевода
-        /// </summary>
-        public string PaymentOperatorINN { get; set; }
-
-        /// <summary>
-        ///     Телефон поставщика
-        /// </summary>
-        public string[] SupplierPhoneNumbers { get; set; }
+        public string CauseDocumentNumber { get; set; }
 
         /// <summary>
         ///     Дополнительный реквизит пользователя
@@ -108,21 +78,6 @@ namespace OrangedataRequest.Models
         public string SettlementPlace { get; set; }
 
         /// <summary>
-        ///     Покупатель (клиент)
-        /// </summary>
-        public string Customer { get; set; }
-
-        /// <summary>
-        ///     ИНН покупателя (клиента)
-        /// </summary>
-        public string CustomerINN { get; set; }
-
-        ///<summary>
-        ///     Информация о покупателе (клиенте)
-        ///</summary>
-        public Dictionary<string, string> CustomerInfo { get; set; }
-
-        /// <summary>
         /// Кассир, 1021
         /// </summary>
         public string Cashier { get; set; }
@@ -138,7 +93,7 @@ namespace OrangedataRequest.Models
         public string SenderEmail { get; set; }
 
         /// <summary>
-        /// Сумма расчета, указанного в чеке (БСО), 1020.
+        ///     Сумма расчета, указанного в чеке (БСО
         /// </summary>
         public decimal TotalSum { get; set; }
 
@@ -146,31 +101,36 @@ namespace OrangedataRequest.Models
         /// Сумма НДС чека по ставке 20%, 1102
         /// </summary>
         public decimal Vat1Sum { get; set; }
-        
+
         /// <summary>
         /// Сумма НДС чека по ставке 10%, 1103
         /// </summary>
         public decimal Vat2Sum { get; set; }
-        
+
         /// <summary>
         /// Сумма расчета по чеку с НДС по ставке 0%, 1104
         /// </summary>
         public decimal Vat3Sum { get; set; }
-        
+
         /// <summary>
         /// Сумма расчета по чеку без НДС, 1105
         /// </summary>
         public decimal Vat4Sum { get; set; }
-        
+
         /// <summary>
         /// Сумма НДС чека по расч. ставке 20/120, 1106
         /// </summary>
         public decimal Vat5Sum { get; set; }
-        
+
         /// <summary>
         /// Сумма НДС чека по расч. ставке 10/110, 1107
         /// </summary>
         public decimal Vat6Sum { get; set; }
+
+        ///<summary>
+        ///     Информация о покупателе (клиенте)
+        ///</summary>
+        public Dictionary<string, string> CustomerInfo { get; set; }
 
         /// <summary>
         /// Операционный реквизит чека
@@ -180,6 +140,6 @@ namespace OrangedataRequest.Models
         /// <summary>
         /// Отраслевой реквизит чека
         /// </summary>
-        public Dictionary<string,string> IndustryAttribute { get; set; }
+        public Dictionary<string, string> IndustryAttribute { get; set; }
     }
 }

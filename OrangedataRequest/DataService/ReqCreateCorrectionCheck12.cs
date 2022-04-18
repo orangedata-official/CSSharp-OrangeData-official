@@ -8,7 +8,7 @@ namespace OrangedataRequest.DataService
     ///     Тело запроса
     /// </summary>
     [JsonObject]
-    public class ReqCreateCheck
+    public class ReqCreateCorrectionCheck12
     {
         /// <summary>
         ///     Идентификатор документа
@@ -28,7 +28,7 @@ namespace OrangedataRequest.DataService
         /// <summary>
         ///     Содержимое документа
         /// </summary>
-        public Content Content { get; set; }
+        public CorrectionContent12 Content { get; set; }
 
         /// <summary>
         ///     Название ключа который должен быть использован для проверки подпись. 
@@ -51,6 +51,6 @@ namespace OrangedataRequest.DataService
         /// Флаг указывающий стоит ли игнорировать проверку КМ
         /// </summary>
         [DefaultValue(false)]
-        public bool IgnoreItemCodeCheck { get; set; }
+        public string IgnoreItemCodeCheck { get; set; }
     }
 }

@@ -11,14 +11,14 @@ namespace OrangedataRequest.DataService
 {
     internal sealed class ODDataService
     {
-        public ODDataService(string keyPath, string certPath, string certPassword, string apiUrl = "https://46.28.89.45:2443/api/v2")
+        public ODDataService(string keyPath, string certPath, string certPassword, string apiUrl = "https://apip.orangedata.ru:2443/api/v2")
         {
             _keyPath = keyPath;
             _cert = new X509Certificate2(certPath, certPassword);
             _apiUrl = apiUrl;
         }
 
-        private string _apiUrl = "https://46.28.89.45:2443/api/v2";
+        private string _apiUrl = "https://apip.orangedata.ru:2443/api/v2/";
 
         private readonly string _keyPath;
         private readonly X509Certificate2 _cert;
@@ -42,6 +42,14 @@ namespace OrangedataRequest.DataService
             return await SendRequestAsync<RespCreateCheck>($"{_apiUrl}/corrections", HttpMethod.Post, requestBody, signature);
         }
 
+        public async Task<ODResponse> CreateCorrectionsCheckAsync12(ReqCreateCorrectionCheck12 correctionCheck)
+        {
+            var requestBody = SerializationHelper.Serialize(correctionCheck);
+            var signature = ComputeSignature(requestBody);
+
+            return await SendRequestAsync<RespCreateCheck>($"{_apiUrl}/correction12", HttpMethod.Post, requestBody, signature);
+        }
+
         public async Task<ODResponse> GetCheckStateAsync(string INN, string documentId)
         {
             return await SendRequestAsync<RespCheckStatus>($"{_apiUrl}/documents/{INN}/status/{documentId}", HttpMethod.Get);
@@ -50,6 +58,36 @@ namespace OrangedataRequest.DataService
         public async Task<ODResponse> GetCorrectionCheckStateAsync(string INN, string documentId)
         {
             return await SendRequestAsync<RespCorrectionCheckStatus>($"{_apiUrl}/corrections/{INN}/status/{documentId}", HttpMethod.Get);
+        }
+
+        public async Task<ODResponse> GetCorrectionCheckStateAsync12(string INN, string documentId)
+        {
+            return await SendRequestAsync<RespCorrectionCheckStatus12>($"{_apiUrl}/correction12/{INN}/status/{documentId}", HttpMethod.Get);
+        }
+
+        public async Task<ODResponse> GetKKTDeviceStateAsync(string INN, string groupName)
+        {
+            return await SendRequestAsync<RespKKTDevicesStatus>($"{_apiUrl}/devices/status/{INN}/{groupName}", HttpMethod.Get);
+        }
+
+        public async Task<ODResponse> GetAccessStateAsync(ReqAccessStatus request)
+        {
+            var requestBody = SerializationHelper.Serialize(request);
+            var signature = ComputeSignature(requestBody);
+            return await SendRequestAsync<RespAccessStatus>($"{_apiUrl}/check", HttpMethod.Post,requestBody,signature);
+        }
+
+        public async Task<ODResponse> CreateItemCodeCheckAsync(ReqItemCodeCheck request)
+        {
+            var requestBody = SerializationHelper.Serialize(request);
+            var signature = ComputeSignature(requestBody);
+
+            return await SendRequestAsync<ReqItemCodeCheck>($"{_apiUrl}/itemcode", HttpMethod.Post, requestBody, signature);
+        }
+
+        public async Task<ODResponse> GetItemCodeStateAsync(string INN, string documentId)
+        {
+            return await SendRequestAsync<RespItemCodeStatus>($"{_apiUrl}/itemcode/{INN}/status/{documentId}", HttpMethod.Get);
         }
 
         #endregion Public methods

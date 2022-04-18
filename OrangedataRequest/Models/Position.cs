@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 using Newtonsoft.Json;
 using OrangedataRequest.Enums;
 
@@ -48,6 +49,16 @@ namespace OrangedataRequest.Models
         public string NomenclatureCode { get; set; }
 
         /// <summary>
+        ///     Код маркировки, 2000
+        /// </summary>
+        public string ItemCode { get; set; }
+
+        /// <summary>
+        ///     Планируемый статус, 2003
+        /// </summary>
+        public byte? PlannedStatus { get; set; }
+
+        /// <summary>
         ///     Данные поставщика
         /// </summary>
         public SupplierInfo SupplierInfo { get; set; }
@@ -73,6 +84,12 @@ namespace OrangedataRequest.Models
         public string UnitOfMeasurement { get; set; }
 
         /// <summary>
+        ///     Мера количества предмета расчета, 2108
+        /// </summary>
+        [DefaultValue(0)]
+        public byte QuantityMeasurementUnit { get; set; }
+
+        /// <summary>
         ///     Дополнительный реквизит предмета расчета
         /// </summary>
         public string AdditionalAttribute { get; set; }
@@ -96,5 +113,25 @@ namespace OrangedataRequest.Models
         /// Сумма НДС за предмет расчета, 1200
         /// </summary>
         public decimal TaxSum { get; set; }
+
+        /// <summary>
+        /// Размер НДС за единицу предмета расчета, 1198
+        /// </summary>
+        public decimal UnitTaxSum { get; set; }
+
+        /// <summary>
+        /// Дробное количество маркированного товара, 1291
+        /// </summary>
+        public Dictionary<string, ulong> FractionalQuantity { get; set; }
+
+        /// <summary>
+        /// Отраслевой реквизит чека
+        /// </summary>
+        public Dictionary<string, string> IndustryAttribute { get; set; }
+
+        /// <summary>
+        /// Штрих-коды предмета расчета
+        /// </summary>
+        public Dictionary<string, string> Barcodes { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using OrangedataRequest.Models;
 namespace OrangedataRequest.DataService
 {
     [JsonObject]
-    public class RespCheckStatus
+    public class RespCorrectionCheckStatus12
     {
         /// <summary>
         ///     Идентификатор документа
@@ -35,6 +35,11 @@ namespace OrangedataRequest.DataService
         ///     Web-сайт ОФД
         /// </summary>
         public string OFDWebsite { get; set; }
+
+        /// <summary>
+        ///     ИНН ОФД
+        /// </summary>
+        public string OFDInn { get; set; }
 
         /// <summary>
         ///     Web-сайт ФНС
@@ -74,7 +79,7 @@ namespace OrangedataRequest.DataService
         /// <summary>
         ///     Содержимое документа
         /// </summary>
-        public Content Content { get; set; }
+        public CorrectionContent12 Content { get; set; }
 
         /// <summary>
         ///     Сдача
@@ -82,23 +87,18 @@ namespace OrangedataRequest.DataService
         public decimal Change { get; set; }
 
         /// <summary>
-        ///     Фискальный признак  
+        ///     Фискальный признак
         /// </summary>
         public string FP { get; set; }
 
         /// <summary>
-        ///     URL для отправки результатов обработки чека POST запросом  
+        /// URL для отправки результатов обработки чека POST запросом
         /// </summary>
         public string CallbackUrl { get; set; }
 
         /// <summary>
-        ///     Метаданные запроса  
+        /// Метаданные запроса
         /// </summary>
         public string Meta { get; set; }
-
-        /// <summary>
-        ///     Тело ответа с ошибками обработки КМ (при статусе ответа 422) 
-        /// </summary>
-        public KMErrorInfo[] Errors { get; set; }
     }
 }
