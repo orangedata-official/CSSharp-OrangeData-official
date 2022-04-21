@@ -14,7 +14,7 @@ namespace OrangedataRequest.Models
         /// <summary>
         ///     Признак расчета
         /// </summary>
-        public int? FfdVersion { get; set; } 
+        public FfdVersionEnum? FfdVersion { get; set; } 
 
         /// <summary>
         ///     Признак расчета

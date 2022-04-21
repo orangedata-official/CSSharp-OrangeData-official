@@ -14,7 +14,7 @@ namespace OrangedataRequest.Models
         /// <summary>
         ///     Номер версии ФФД, 1209(ФФД 1.2 - 4)
         /// </summary>
-        public int FfdVersion { get; set; }
+        public FfdVersionEnum FfdVersion { get; set; }
 
         /// <summary>
         ///     Признак расчета
